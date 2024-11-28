@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1161b0pdwx6r"]
+
+[ext_resource type="Script" path="res://bbrew/brews.gd" id="1_7vh3m"]
+
+[node name="Brews" type="Node"]
+script = ExtResource("1_7vh3m")
