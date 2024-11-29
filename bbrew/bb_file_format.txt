@@ -1,0 +1,21 @@
+Black Bouquet makes use of addon configurations and assets which will be referred to here on as Brews. Brews are made of several types of files which all share a similar syntax, but have different fields they must define to be valid. These are denoted via their extension, which all starts with .bb, followed by what the file is defining, like .bbmeta for information on an entire Brew, and bbwall for wall assets that can be used inside an atlas.
+
+Generally speaking, these file types follow a similar set of rules/principles. They must be made in a way that does not "look scary" to less technical users. There should be no usage of special symbols typically used in programming in very strict looking ways. {}, :, ;, "" should all be used very sparingly if possible, and be replaced with forms of consistant, but natural language. This language will function the same as those symbols, but will have the optics of being much less intimidating. Hopefully these measures mean that its easier for non-computerized folk to still mess with systems with windows notepad if they want.
+
+Syntax Rules:
+BB files are broken down line by line, each line creating a Definition for a specific keyword. Each type of file will have unique keywords specific to the purpose (.bbwall will have image paths, which is not important for .bbmeta files for example). An example line will look like the following:
+[Definition] [Operator] [Value]
+Operators mostly are just meant to denote the split from Definition to Value, and all act the same for reading and parsing in the end. Specific rules for making Definitions and operators are below.
+
+Operators:
+- "as" denotes the use of metadata for the asset. This is the asset's name, display name, user credits, anything such as that.
+- "is" denotes the use of another asset within the game. This can be from the same brew, or from another one by adding "in" to the end of the "is" statement
+- "from" denotes the use of an asset inside another brew. This is most commonly used with "is", like "[Definition] is [asset] in [brew]"
+- "at" denotes the place to insert data using "to". The value is the hook "to" must use.
+- "to" used as the reverse of "is". While "is" denotes the current files reliance on another, "to" has the asset output some kind of information into another asset, like a table pointing to a spot in the codex where it should appear, or an item declaring the table it should be inside. "is" says that the asset doesn't add to the original, "to" says the asset does add to the original.
+
+Common Definitions: (all files will have these)
+- "Reference [as]" will give the file it's namespace when referred to by other files. Inside .bbmeta, this creates the root namespace.
+- "Display [as]" is the pretty version of the reference, and what should be used in most menus and GUIs when referring to the asset.
+- "Credit [as]" adds the following value to an array of credits, which are displayed with the asset. This is just a signature to sign the work of brewers inside the application.
+

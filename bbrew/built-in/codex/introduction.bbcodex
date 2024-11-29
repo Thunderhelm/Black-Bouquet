@@ -1,0 +1,13 @@
+Reference as introduction
+Display as Introduction
+
+Credit as Thunderhelm
+
+Text at additional-text
+
+Contents as Below
+This is the built-in Black Bouquet module. It contains minimal functionality, and serves mostly as an example on how to make modules for Black Bouquet. While they are all usable, only some parts are useful. The huamn stat block, for instance, will likely not be very helpful for almost any game, but the D6 might serve some use for Brews that don't need to add their own.
+
+To use this codex as an example for formatting codexs, this paragraph cannot be used by the built-in module or any other module for any part of themselves. The previous paragraph however, can be used in other parts of a module, such as the character sheet. And text may be added here:
+[additional-text]
+That is what the codex takes in, and it can be added to by any module.
