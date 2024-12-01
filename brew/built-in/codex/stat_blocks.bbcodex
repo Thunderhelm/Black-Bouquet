@@ -1,0 +1,14 @@
+#[]>stat-blocks "Stat Blocks (.bbstatblock)"
+By: Thunderhelm
+
+Contents:
+Stat blocks represent the fields filled in by creatures, objects, or players to detail an object. Commonly, these will be enemies in a bestiary, character sheets for players, or gear like weapons and armor. Stat Blocks provide a set of out-going hooks used by other resources as a base to fill in. These must be first defined according to the hook format, with the following key-words usable:
+
+[Text:] means that it is a field that is typed into with a normal alphabet.
+[Num:] means that it can only be a number, and can have math applied to it.
+  - {Min:} is the lowest number the stat can be. When not specified, there is no minimum.
+  - {Max:} is the highest number the stat can be. When not specific, there is no maximum.
+  - {Increment:} is the size of the change when editing the stat block. For instance, if each tile in a system is 5ft, movement measured in feat should have an increment of 5, or {Increment: 5}
+  - {From:} takes a valid mathematical expression, and uses it to calculate the stat directly. This stops the stat from being editable.
+  - {Roller:} must be a valid resource name for a roller resource, or a .bbroller. This means that the stat will be able to roll dice in the interface, and will default to rolling an amount of dice equal to the number of the stat.
+  - {Roll Count:} takes a valid mathematical expression, and will roll that many dice when the roller is used.

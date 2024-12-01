@@ -1,0 +1,21 @@
+#[]>brew-format "Brew File Formats"
+By: Thunderhelm
+
+Contents:
+Bouquet Brews are made up of a folder full of files which specify the rules and tools of the system they are built for, or the assets they represent. These files can seem like a strange set of symbols at first, but with a few quick rules you should be on your way. 
+
+For developers: Black Bouquet uses it's own restricted format for it's Brew files. There are several reasons why this is the case, but the main one is that other formats are open-ended in a way that allows for extra non-Black Bouquet data to hitch a ride, and they only define how to store dictionaries, and not logic and patterns for Black Bouquet to interpret. I apologize ahead of time for the inconvenience this may cause.
+
+Each Black Bouquet file, which start with .bb[resource] (like .bbroller, .bbcodex, .bbwall, etc.) has the same set of symbols and required data to be parsed, but depending on the specific purposes of the resource, some additional parts may be required to make the resource parsable. You can find the specifics of the requirements and tools unique to a specific resource in the following pages of the codex.
+
+Black Bouquet files start by declaring how they are accessed, and how they are displayed. This will appear at the first line of the file, and usually appear like the following:
+#[]>resource-name "Display Name"
+The resource name, shown above as following the initial set of symbols, must not have any characters other than letters, numbers, and hyphens. This will be how you reference this specific resource in other files. For instance, a stat block made with #[]>human at the top can be used by a character file by using #[]>human to reference it. The quotation marks however are optional, and can overwrite how the resource will appear in the game, instead of using its technical resource name.
+
+Resource references, like the ones just defined above, have a specific set of symbols used as shortcuts. If the human example is fully spread out, it would read as the following:
+name-space/resource-type/resource-name
+To make that shorter and easier to not break, these parts can be replaced with a # and a [] which the game will try to automatically replace. # represents the resource name of the brew itself, also known as the namespace. If you want to use a resource from another brew, you should replace the # with the brew's namespace. [] automatically replaces itself with the directory of the resource based on context. It's use is very limited in scope, only being usable when the context is easy to find. (For instance, in the resource name it can assume its type by using it's file extention). These two symbol sets can be used whenever you need to use a resource in any other resource.
+
+Hooks are also present in quite a few resources. These will appear are <- or ->, and represent a specific piece of data that the resource shares around. <- represents the resource sharing something, such as a format in the case of .bbstatblock, formatted as <-[hook]. The alternate form or [hook]<- is used when another resource can take in some form of information, and must hook in using a resource name. [hook]-> creates a hook that can have information provided by another resource that has a [hook]<-, and ->[hook] intakes a specific hook provided by some kind of outlining file, and fills in the information provided. This is most clearly seen with .bbstackblock using <-[hook]s that provide fields like names and stats, which are filled in with ->[hook]s in character sheets.
+
+Any line with a word before a : represents a piece of key data. The main one used across all files as an optional piece is the By: data, which is used to give credits to creators of specific resources.

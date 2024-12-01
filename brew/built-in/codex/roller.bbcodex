@@ -1,0 +1,15 @@
+#[]>rollers "Rollers (.bbroller)"
+By: Thunderhelm
+
+Contents:
+Rollers represent the element of randomness most systems use. Most commonly this is just standard dice like D6s, D8s, D20s, etc. However, some systems take use of other random features, like custom dice with unique meanings/symbols, or a deck of cards to draw from. For these, rollers are still your go-to.
+
+The "Sides:" keyword denotes that the rest of the file is taken to put in the sides of the roller. With a deck of cards, this is 52 Isolated Hooks, for a D20, this is 20 Isolated Hooks, each with the number or card value typed into the hook. These have no defined hook types like Num or Text.
+
+Isolated Hooks:
+[Any Text] will just result in that text when the dice is rolled
+[Any Number] (like [1]) will result in that numerical value being rolled.
+[Number, Resource path to image] will replace the number on the die with an image in the game, but still treat it as that number for scoring.
+
+{Explode} means to add an additional die to the dice pool, and with out a : specifier, it will just add another of the same roller. This die will be rolled just like the rest and added into the result.
+{Reroll} causes the roller to throw out its result and try its random roll again. Using a : will mean if a roller lands on a reroll :x amount of times, it will just use the value of the rerolling side.

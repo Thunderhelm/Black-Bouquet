@@ -1,0 +1,7 @@
+#[]>human: "Human"
+By: Thunderhelm
+
+<-[Text: Name](Name Here)
+<-[Num: Level](1){Min: 1}{Max: 1}{Increment: 1}
+<-[Num: Next Level]{From: Level + 1}
+<-[Num: Skill]{Roller: #[]>d6}{Roll Count: Skill * 2}
