@@ -54,3 +54,28 @@ func build_brew(brew_root_path: String) -> BrewMeta:
 	var brew_root: BrewMeta = BrewMeta.from_file(brew_root_path + "/" + META_FILE_NAME)
 	print(brew_root)
 	return brew_root
+
+
+func get_component(caller_namespace: BrewMeta, component_path: String, hint: BrewComponent.TYPES = BrewComponent.TYPES.BLANK) -> BrewComponent:
+	var target_namespace: BrewMeta
+	if component_path.begins_with("#"):
+		target_namespace = caller_namespace
+		component_path = component_path.replace("#>", "")
+	else:
+		target_namespace = get_node_or_null(component_path.split(">")[0])
+		if not target_namespace:
+			return
+		component_path = component_path.replace(target_namespace.name + ">", "")
+	
+	if component_path.begins_with("[]"):
+		for component in target_namespace.components:
+			if not component.type == hint:
+				continue
+			if component.name == component_path.split(">")[-1]:
+				return component
+		return
+	
+	var found_component: BrewComponent = target_namespace.get_node_or_null(component_path.replace(">", "/"))
+	if found_component and (hint == BrewComponent.TYPES.BLANK or hint == found_component.type):
+		return found_component
+	return

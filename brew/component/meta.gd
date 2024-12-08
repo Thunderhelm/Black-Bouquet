@@ -1,9 +1,14 @@
 class_name BrewMeta
 extends BrewComponent
+func _get_type() -> TYPES:
+	return TYPES.META
 
 
 const REQUIRED_DECLARATION_EDITION: String = "Edition"
 const REQUIRED_DECLARATION_VERSION: String = "Version"
+
+
+var components: Array[BrewComponent] = []
 
 
 
@@ -45,6 +50,7 @@ static func from_file(file_path: String) -> BrewMeta:
 	
 	var lines: PackedStringArray = meta_content.split("\n")
 	new_meta.name = lines[0].split("#=")[1].split(" ")[0]
+	new_meta.brew_namespace = new_meta
 	if lines[0].contains("\""):
 		new_meta.display = lines[0].split("\"")[1]
 	

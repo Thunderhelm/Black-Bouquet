@@ -1,0 +1,15 @@
+#[]>tokens "Tokens (.bbtoken)"
+By: Thunderhelm
+
+Contents:
+A Token is a placeable "thing" inside of an Atlas that can change around in any form of dynamic way. Tokens are most commonly used for characters and enemies, but they may also find use inside traps, breakable walls, loose items, or involved puzzles. Tokens on their own do very little, only being a moveable thing that can be dragged around, but their main purpose is to have a Stat Block and Logic Layer applied to them in order to have them serve as a more complex "thing." Tokens are used by Logic Layers to keep track of a stat block and its purposes, like movement, damage, or effects, and they act as a form of Context for a Logic Layer should the logic layer require the token to do something like an attack.
+
+Tokens are based on images or small animation loops. While all tokens only need 1 image to be represented, each token may choose to use the Logic Layer it's based on to create a much more dynamic and involved token, where results can have their own animations or images, which activate with the result is used in a Logic Layer.
+
+Isolated Hooks:
+[Any Text] will just result in that text when the dice is rolled
+[Any Number] (like [1]) will result in that numerical value being rolled.
+[Number, Resource path to image] will replace the number on the die with an image in the game, but still treat it as that number for scoring.
+
+{Explode} means to add an additional die to the dice pool, and with out a : specifier, it will just add another of the same roller. This die will be rolled just like the rest and added into the result.
+{Reroll} causes the roller to throw out its result and try its random roll again. Using a : will mean if a roller lands on a reroll :x amount of times, it will just use the value of the rerolling side.

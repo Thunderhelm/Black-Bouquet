@@ -1,6 +1,14 @@
 class_name BrewComponent
 extends Node
 
+enum TYPES {
+	BLANK,
+	META,
+	LOGIC_LAYER,
+	STAT_BLOCK,
+	TOKEN
+}
+
 
 const OPTIONAL_DECLARATION_BY: String = "By"
 const OPTIONAL_DECLARATION_IS: String = "Is"
@@ -13,6 +21,12 @@ var display: String = "":
 		else:
 			return display
 
+var type: TYPES:
+	get:
+		return _get_type()
+
+var brew_namespace: BrewMeta
+
 
 
 func validate_config(conf_content: String) -> bool:
@@ -24,8 +38,13 @@ func validate_config(conf_content: String) -> bool:
 		return false # Does not have complete display name declaration
 	return _validate(lines)
 
+
 func _validate(lines: PackedStringArray) -> bool:
 	return false
+
+
+func _get_type() -> TYPES:
+	return TYPES.BLANK
 
 
 static func from_file(file_path: String) -> BrewComponent:

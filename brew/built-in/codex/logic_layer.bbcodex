@@ -1,0 +1,17 @@
+#[]>logic-layers "Logic Layers (.bblogic)"
+By: Thunderhelm
+
+Contents:
+Logic Layers add functionality to rules a system uses for gameplay. While you can have characters, weapons, enemies, items, or anything else to make game data, none of them can work together to make the game move without a Logic Layer to guide them. The easiest example of a Logic Layer would be combat within a system. Strict movement style, keeping track of actions, and deciding who goes when are all different layers of rules, or logic, that make the game move as it should. Logic Layers are also able to add more specific mechanics, like damage over time, slow movement terrain, turn skipping, or simulating time passing, allowing all these systems to be reactive to any piece of the system you otherwise make. Logic Layers may seem intimidating, but stick with it and you'll be making things run in no time.
+
+Logic Layers are created using Context, Routes, and Results. Context goes at the top of a Logic Layer, and acts as a source of information or control over the Logic Layer. These can be weapon stats, character movement speed, initiative rolls or anything similar. Routes are the ways the Logic Layer can move forward from a specific point. For instance, a route may change what the Logic Layer does depending on if an attack roll is able to strike through the armor of an enemy, whether the roll crits, or whether the roll fails. Most systems may want different things to result from this situations, and routes let alter how those situations are treated by the Logic Layer. Lastly are Results, or the end of a Route. When all is said and done, a Result is used to apply the logic of a Logic Layer. This can be applying damage to an enemy, adding an effect, breaking a weapon, or simply doing nothing.
+
+Logic Layers can also route through eachother. This may seem complex at first, but it shouldnt be too scary. Logic Layers can reference eachother inside eachother, meaning that if you have logic shared by multiple layers, like enemies moving using the same rules as players, or going through the turn order with different things using different logic, you dont have to remake an entire logic layer *again*. In most situations, using multiple Logic Layers together will be the most helpful solution to making a robust set of logic easily with many less layers required.
+
+Isolated Hooks:
+[Any Text] will just result in that text when the dice is rolled
+[Any Number] (like [1]) will result in that numerical value being rolled.
+[Number, Resource path to image] will replace the number on the die with an image in the game, but still treat it as that number for scoring.
+
+{Explode} means to add an additional die to the dice pool, and with out a : specifier, it will just add another of the same roller. This die will be rolled just like the rest and added into the result.
+{Reroll} causes the roller to throw out its result and try its random roll again. Using a : will mean if a roller lands on a reroll :x amount of times, it will just use the value of the rerolling side.
